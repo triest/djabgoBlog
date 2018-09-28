@@ -5,6 +5,14 @@
     <title>Articles</title>
 </head>
 <body>
-
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <p><a href="{% url 'detail' pk=article.id %}">{{article.title}}</a> </p>
+                <p>{{article.snipped}}</p>
+                 <p>{{article.date}} </p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

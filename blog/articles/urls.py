@@ -21,6 +21,7 @@ from . import views;
 
 urlpatterns = [
 
-    path('', views.article_list),
+    path('', views.article_list,name="list"),
     path('about', views.article_list),
+    path('<int:pk>',views.article_detail,name="detail")
 ]
