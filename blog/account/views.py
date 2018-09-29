@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout;
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login,logout;
+from django.shortcuts import render, redirect
+
+
 # Create your views here.
 
 def singup_view(request):
@@ -13,6 +15,8 @@ def login_view(request):
         if(form.is_valid()):
             user=form.get_user();
             login(request,user)
+            if 'next' in request:
+                return redirect(request.POST.get('next'))
             return redirect('articles:list')
 
     else:
