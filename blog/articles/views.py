@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 # Create your views here.
 
+app_name='articles'
+
 def article_list(requwest):
     articles=Article.objects.all().order_by('date')
     return render(requwest,"articles/article_list.html",{'articles':articles})
@@ -19,9 +21,10 @@ def article_create(request):
     if request.method=='POST':
         form=forms.CreateArticle(request.POST,)
         if form.is_valid():
-            instance=form.save(commit=False)
-            instance.author=request.user
-            instance.save()
+            form.save(commit=True)
+            #instance.author=request.user
+            #instance.save()
+
             return redirect('articles:list')
     else:
         form=forms.CreateArticle()
