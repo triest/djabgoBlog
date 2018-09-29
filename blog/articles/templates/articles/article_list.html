@@ -19,9 +19,10 @@
     <div class="articles">
         {% for article in articles %}
             <div class="article">
-
-                <p>{{article.snipped}}</p>
-                 <p>{{article.date}} </p>
+                <H2>{{article.title}}</H2>
+                <p><a href="{% url 'detail' id=article.id %}">{{article.title}}</a> </p>
+                <p>{{article.author}}</p>
+                <p>{{article.date}} </p>
             </div>
         {% endfor %}
     </div>
