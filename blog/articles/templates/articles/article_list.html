@@ -5,6 +5,17 @@
     <title>Articles</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li>
+                <form class="logout-link" action="{% url 'accounts:logout'%}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="logout">
+                </form>
+            </li>
+        </ul>
+    </nav>
+
     <div class="articles">
         {% for article in articles %}
             <div class="article">
