@@ -27,3 +27,10 @@ class Article(models.Model):
 
     def snipped(self):
         return self.description[:50]+'...'
+
+
+class Subscribe(models.Model):
+   name=models.CharField(max_length=30,null=False);
+   #subscribed_user=models.OneToOneField(User, on_delete=models.PROTECT)
+   owner=models.ForeignKey(User,related_name='owner', null=False, blank=True, on_delete=models.PROTECT)
+   subscribers = models.ManyToManyField(User,related_name='subscription')

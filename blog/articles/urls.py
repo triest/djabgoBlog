@@ -27,5 +27,6 @@ urlpatterns = [
     path('about', views.article_list),
    # path('<int:slug>',views.article_detail,name="detail"),
     path('<int:id>',views.article_detail,name="detail"),
-    path('create',views.article_create,name="create")
+    path('create',views.article_create,name="create"),
+    path('create2', views.article_create2, name="create2")
 ]
