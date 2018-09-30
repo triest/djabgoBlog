@@ -8,7 +8,7 @@ from . import forms
 #app_name='articles'
 
 def article_list(requwest):
-    articles=Article.objects.all().order_by('date')
+    articles=Article.objects.all().order_by('-date')
     return render(requwest,"articles/article_list.html",{'articles':articles})
 
 def article_detail(requwest,id):

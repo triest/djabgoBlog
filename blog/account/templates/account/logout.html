@@ -6,15 +6,15 @@
 </head>
 <body>
 
-    <h1>Login</h1>
-    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+    <h1>Logout</h1>
+    <form class="site-form" action="{% url 'accounts:logout' %}" method="post">
         {% csrf_token %}
         {{form}}
         {%if request.GET.next %}
             <input type="hidden" name="next" value="{{request.GET.next}}">
         {%endif%}
         <br>
-        <input type="submit" value="login">
+        <input type="submit" value="logout">
     </form>
 </body>
 </html>

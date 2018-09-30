@@ -15,9 +15,12 @@ def login_view(request):
         if(form.is_valid()):
             user=form.get_user();
             login(request,user)
-            if 'next' in request:
-                return redirect(request.POST.get('next'))
-            return redirect('articles:list')
+            return render(request,'account/success.html')
+            #if 'next' in request:
+                #return redirect(request.POST.get('next'))
+            #return redirect('articles:list')
+        form = AuthenticationForm();
+        return render(request, 'account/login.html', {'form': form})
 
     else:
         form=AuthenticationForm();
@@ -28,3 +31,4 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('articles:list')
+    return render(request, 'account/logout.html')
