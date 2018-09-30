@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-Seeb page
+
+Blogs:
+  <form  action="{% url 'create'%}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Send Post">
+    </form>
 </body>
 </html>
