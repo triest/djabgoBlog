@@ -5,27 +5,18 @@
     <title>Articles</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>
-                <form class="logout-link" action="{% url 'accounts:logout'%}" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="logout">
-                </form>
-            </li>
-        </ul>
-    </nav>
-
-
 
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
+      <form class="logout-link" action="{% url 'accounts:logout'%}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="logout">
+                </form>
+      <p><a href="{% url 'create' %}">Создать статью</a> </p>
 {% else %}
   <p>You are not logged in</p>
 
 {% endif %}
-
-     <p><a href="{% url 'create' %}">Создать статью</a> </p>
 
     <div class="articles">
         {% for article in articles %}
