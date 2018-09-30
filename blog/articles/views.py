@@ -16,7 +16,7 @@ def article_detail(requwest,id):
     return render(requwest,'articles/detail.html',{'article':article})
     #return HttpResponse(pk)
 
-#@login_required(login_url="/account/login")
+@login_required(login_url="/account/login")
 def article_create(request):
     if request.method=='POST':
         form=forms.CreateArticle(request.POST,)
