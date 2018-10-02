@@ -5,7 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-
+{% if user.is_authenticated %}
+loggin
+{% endif %}
     <div class="article-detail">
         <div class="article">
             <h3>{{article.title}}</h3>

@@ -21,9 +21,9 @@ def article_create(request):
     if request.method=='POST':
         form=forms.CreateArticle(request.POST,)
         if form.is_valid():
-            form.save(commit=True)
-            #instance.author=request.user
-            #instance.save()
+            instance=form.save(commit=True)
+            instance.author=request.user
+            instance.save()
             return article_list(request)
           #  return redirect('articles:list')
     else:
@@ -35,9 +35,9 @@ def article_create2(request):
     if request.method == 'POST':
         form = forms.CreateArticle(request.POST, )
         if form.is_valid():
-            form.save(commit=True)
-            # instance.author=request.user
-            # instance.save()
+            instance =form.save(commit=True)
+            instance.author=request.user
+            instance.save()
             article_list(request)
 
     else:

@@ -15,6 +15,6 @@ def main(request):
     #print (vars(current_user))
     #subscrive=Subscribe.objects.all();
    # subscribe=Subscribe.objects.all();
-    #form = forms.SunscribeForm()
+    form = forms.SunscribeForm()
     return render(request,'test.html',{'user':current_user,'form':form})
 
