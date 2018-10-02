@@ -29,3 +29,4 @@ class Article(models.Model):
         return self.description[:50]+'...'
 
 
+

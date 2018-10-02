@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Article
 from django.contrib.auth.decorators import login_required
+from blog.subscribe.models import Subscribe;
 from . import forms
 # Create your views here.
 
@@ -44,3 +46,14 @@ def article_create2(request):
         form = forms.CreateArticle()
 
     return render(request, 'articles/article_create2.html', {'form': form})
+
+
+@login_required(login_url="/account/login")
+def sunscribe(request,id):
+    #id -id пользователя
+    user=User.object.get(pk=id) #article author
+    current_user = request.user  #auth user
+    sunscribe1=Subscribe;
+    
+
+    return article_list(request)
