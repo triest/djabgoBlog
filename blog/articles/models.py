@@ -9,7 +9,7 @@ class Article(models.Model):
     description=models.TextField();
     date=models.DateTimeField(auto_now_add=True);
     #author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    author = models.ForeignKey(User, null=False, blank=True, on_delete=models.PROTECT)
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT)
     #author = models.ForeignKey(User, blank=True, on_delete=models.PROTECT)
     #author = models.ForeignKey(User,  blank=True, null=True, on_delete=models.PROTECT)
     #author = models.ForeignKey(User, default=None, on_delete=models.PROTECT)

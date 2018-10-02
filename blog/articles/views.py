@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Article
 from django.contrib.auth.decorators import login_required
-from blog.subscribe.models import Subscribe;
+from subscribe.models import Subscribe;
 from . import forms
 # Create your views here.
 
@@ -53,7 +53,7 @@ def sunscribe(request,id):
     #id -id пользователя
     user=User.object.get(pk=id) #article author
     current_user = request.user  #auth user
-    sunscribe1=Subscribe;
-    
-
+    sunscribe1=Subscribe();
+    sunscribe1=sunscribe1.user.add(user);
+    sunscribe1.save();
     return article_list(request)
