@@ -66,7 +66,8 @@ def sunscribe(request,id):
    # sunscribe1 = Subscribe()
    # sunscribe1.owner=request.user; #задаем владельцы
     sunscribe1 = Subscribe.objects.create(name='something', owner=request.user)
-
+   # sunscribe1.subscription_set.add(request.user)
+    sunscribe1.subscription.add(user)
     sunscribe1.save();
     return article_list(request);
    # print("ok");
