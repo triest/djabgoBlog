@@ -53,13 +53,18 @@ def sunscribe(request,id):
     #return article_list(request);
     #id -id пользователя
     user=User.objects.get(pk=id) #article author
- #   current_user = request.user  #auth user
-    sunscribe1=Subscribe();
-    sunscribe1.name=request.user;
-  #  sunscribe1.subscribed_user=sunscribe1.user.add(user);
-   # sunscribe1.ovner
-  #  sunscribe1.subscription=current_user;
-    sunscribe1.owner=request.user;
+    #ищем подпису с ютим пользователем
+    #article=Article.objects.get(pk=id)
+    try:
+        sunscribe1=Subscribe.objects.get(owner=request.user)
+    except Subscribe.DoesNotExist:
+        sunscribe1 = Subscribe();
+        sunscribe1.name=request.user; #задаем имя
+        sunscribe1.owner = request.user
+   # if sunscribe1==None:
+    #
+   # sunscribe1 = Subscribe()
+   # sunscribe1.owner=request.user; #задаем владельцы
     sunscribe1.save();
     return article_list(request);
    # print("ok");
