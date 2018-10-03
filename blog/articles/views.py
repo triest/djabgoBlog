@@ -54,6 +54,12 @@ def sunscribe(request,id):
     user=User.object.get(pk=id) #article author
     current_user = request.user  #auth user
     sunscribe1=Subscribe();
-    sunscribe1=sunscribe1.user.add(user);
+    sunscribe1.name=user.name;
+    sunscribe1.subscribed_user=sunscribe1.user.add(user);
+   # sunscribe1.ovner
+    sunscribe1.subscription=current_user;
+    sunscribe1.owner=user;
     sunscribe1.save();
+
+    print("ok");
     return article_list(request)
