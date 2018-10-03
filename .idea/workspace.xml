@@ -4,8 +4,8 @@
     <list default="true" id="c7b5f161-737a-4a0e-9efc-f965c3e945df" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/db.sqlite3" afterPath="$PROJECT_DIR$/blog/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/articles/urls.py" afterPath="$PROJECT_DIR$/blog/articles/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/articles/views.py" afterPath="$PROJECT_DIR$/blog/articles/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/subscribe/models.py" afterPath="$PROJECT_DIR$/blog/subscribe/models.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +22,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/articles/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+            <state relative-caret-position="433">
+              <caret line="61" column="26" lean-forward="true" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -31,7 +31,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/articles/templates/articles/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog/articles/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/subscribe/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -149,13 +169,13 @@
         <option value="$PROJECT_DIR$/blog/articles/forms.py" />
         <option value="$PROJECT_DIR$/blog/articles/templates/articles/article_create2.html" />
         <option value="$PROJECT_DIR$/blog/articles/templates/articles/article_create.html" />
-        <option value="$PROJECT_DIR$/blog/articles/urls.py" />
         <option value="$PROJECT_DIR$/blog/articles/models.py" />
         <option value="$PROJECT_DIR$/blog/articles/templates/articles/detail.html" />
         <option value="$PROJECT_DIR$/blog/articles/admin.py" />
         <option value="$PROJECT_DIR$/blog/subscribe/admin.py" />
-        <option value="$PROJECT_DIR$/blog/articles/views.py" />
         <option value="$PROJECT_DIR$/blog/subscribe/models.py" />
+        <option value="$PROJECT_DIR$/blog/articles/views.py" />
+        <option value="$PROJECT_DIR$/blog/articles/urls.py" />
       </list>
     </option>
   </component>
@@ -197,6 +217,27 @@
               <item name="djagoBlog" type="b2602c69:ProjectViewProjectNode" />
               <item name="djagoBlog" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djagoBlog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djagoBlog" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="articles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djagoBlog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djagoBlog" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="articles" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djagoBlog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djagoBlog" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="articles" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="articles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -553,20 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/articles/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="31" column="15" lean-forward="true" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/articles/templates/articles/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/blog/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -665,16 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/articles/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/articles/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
@@ -692,6 +709,32 @@
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/articles/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="61" column="26" lean-forward="true" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/articles/templates/articles/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/articles/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
