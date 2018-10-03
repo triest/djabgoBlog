@@ -62,7 +62,7 @@ def sunscribe(request,id):
         sunscribe1.name=request.user; #задаем имя
         sunscribe1.owner = request.user
    # if sunscribe1==None:
-    #
+    sunscribe1.subscription.set([request.user])
    # sunscribe1 = Subscribe()
    # sunscribe1.owner=request.user; #задаем владельцы
     sunscribe1.save();
