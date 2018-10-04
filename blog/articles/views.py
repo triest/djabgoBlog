@@ -70,6 +70,8 @@ def sunscribe(request,id):
         sunscribe1 = Subscribe.objects.create(name='something', owner=request.user)
     sunscribe1.subscription.add(user)
     sunscribe1.save();
+    # получаем статью по id
+
     return article_list(request);
    # print("ok");
    # return articl

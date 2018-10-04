@@ -21,6 +21,9 @@ class Subscribe(models.Model):
 
 
 class Read(models.Model):
+   class Meta:
+      verbose_name_plural = 'reads'
+
    id=models.AutoField(primary_key=True);
    owner_reader = models.ForeignKey(User, related_name='owner_reader', null=False, blank=True,on_delete=models.PROTECT)  # тот, кто прочитал
    articles_readed = models.ManyToManyField(Article, null=True, related_name='readed')  # те, на кого он пдписалса

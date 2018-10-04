@@ -5,6 +5,7 @@ from pprint import pprint
 from .models import Subscribe
 from django.forms import modelform_factory
 from .models import Subscribe
+from .models import Read
 from . import forms
 from django.contrib.auth.models import User;
 from articles.models import Article
@@ -35,3 +36,15 @@ def article_detail(request,id):
 
 
     return render(request,'detail.html',{'article':article,'answer':answer})
+
+def mark_readed(request,id):
+    #id -идентификатор статьи
+    user =request.user # подписант
+    try:
+        reader = Read.objects.get(owner_reader=request.user)  #проверяем, есть ли обьект
+    except Read.DoesNotExist:
+        reader = Read.objects.create(owner_reader=request.user)
+    #добавляем пост в прочитанные
+#    reader.articles_readed.add=Article.objects.get(pk=id)
+   # reader.save();
+    return main(request)

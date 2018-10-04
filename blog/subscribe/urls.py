@@ -24,5 +24,6 @@ app_name='subscribe'
 urlpatterns = [
     path('', views.main, name='main'),
     path('<int:id>', views.article_detail, name="detailsub"),
+    path('readed/<int:id>', views.mark_readed, name="readed"),
 
 ]
