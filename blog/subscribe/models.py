@@ -25,6 +25,7 @@ class Read(models.Model):
     verbose_name_plural = 'reads'
 
    id=models.AutoField(primary_key=True);
+   name = models.CharField(max_length=30, null=True);
    owner_reader = models.ForeignKey(User, related_name='owner_reader', null=False, blank=True,on_delete=models.PROTECT)  # тот, кто прочитал
-   articles_readed = models.ManyToManyField(Article, null=True, related_name='articles_readed')  # те, на кого он пдписалса
+   articles_readed = models.ManyToManyField(Article, null=False, related_name='articles_readed')  # те, на кого он пдписалса
 

@@ -5,6 +5,7 @@ from django.conf import settings
 
 # Create your models here.
 class Article(models.Model):
+    id = models.AutoField(primary_key=True)
     title=models.CharField(max_length=30);
     description=models.TextField();
     date=models.DateTimeField(auto_now_add=True);

@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from inspect import getmembers
 from pprint import pprint
 from .models import Subscribe
@@ -15,7 +15,10 @@ from articles.models import Article
 def main(request):
     current_user = request.user
     #получаем инстанс subscribe авторизованного пользователя
-    subscribe=Subscribe.objects.get(owner=current_user)
+    try:
+        subscribe=Subscribe.objects.get(owner=current_user)
+    except:
+        return render(request,'error.html')
     users = subscribe.subscription.all()
     articles=Article.objects.all()
     #теперь фильтруем
@@ -41,11 +44,11 @@ def mark_readed(request,id):
     #id -идентификатор статьи
     user =request.user # подписант
     try:
-        reader = Read.objects.get(owner_reader=request.user)  #проверяем, есть ли обьект
+        reader1 = Read.objects.get(name='test',owner_reader=request.user)  #проверяем, есть ли обьект
     except Read.DoesNotExist:
-        reader = Read.objects.create(owner_reader=request.user)
+        reader1 = Read.objects.create(name='test',owner_reader=request.user)
     #добавляем пост в прочитанные
-    article=Article.objects.get(pk=id)
-    reader.articles_readed.add=article
-    reader.save();
+    article = Article.objects.get(pk=id)
+    reader1.articles_readed.add(article);
+    reader1.save();
     return main(request)

@@ -24,7 +24,7 @@ urlpatterns = [
     path('subscribe/', include('subscribe.urls')),
     path('articles/', include('articles.urls')),
     path('account/', include('account.urls')),
-    path('subscribe/', include('subscribe.urls',namespace='subscribe')),
+    path('subscribe/', include('subscribe.urls')),
     path('about/',views.about),
 
 
