@@ -2,6 +2,7 @@ from multiprocessing import managers
 
 from django.db import models
 from django.contrib.auth.models import User;
+from articles.models import Article
 
 # Create your models here.
 class Subscribe(models.Model):
@@ -18,3 +19,8 @@ class Subscribe(models.Model):
 
 
 
+
+class Read(models.Model):
+   id=models.AutoField(primary_key=True);
+   owner_reader = models.ForeignKey(User, related_name='owner_reader', null=False, blank=True,on_delete=models.PROTECT)  # тот, кто прочитал
+   articles_readed = models.ManyToManyField(Article, null=True, related_name='readed')  # те, на кого он пдписалса
