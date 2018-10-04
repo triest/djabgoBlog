@@ -45,6 +45,7 @@ def mark_readed(request,id):
     except Read.DoesNotExist:
         reader = Read.objects.create(owner_reader=request.user)
     #добавляем пост в прочитанные
-#    reader.articles_readed.add=Article.objects.get(pk=id)
-   # reader.save();
+    article=Article.objects.get(pk=id)
+    reader.articles_readed.add=article
+    reader.save();
     return main(request)
