@@ -18,7 +18,7 @@ def main(request):
     users = subscribe.subscription.all()
     articles=Article.objects.all()
     #теперь фильтруем
-    list=[x for x in articles if x.author not in users]
+    list=[x for x in articles if x.author  in users]
 
     return render(request,'test.html',{'users':users,'articles':list})
 

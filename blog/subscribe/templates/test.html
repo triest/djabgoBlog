@@ -20,9 +20,21 @@ Blogs:
   <p>You are not logged in</p>
 
 {% endif %}
-
+Пользователи, на которых вы подписаны:
  {% for user in users %}
   {{user.username}}
 {% endfor %}
+<br>
+Лента новостей:
+  <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <H2>{{article.title}}</H2>
+                <p><a href="{% url 'detail' id=article.id %}">{{article.title}}</a> </p>
+                <p>{{article.author}}</p>
+                <p>{{article.date}} </p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
