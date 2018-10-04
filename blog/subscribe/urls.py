@@ -23,5 +23,6 @@ app_name='subscribe'
 
 urlpatterns = [
     path('', views.main, name='main'),
+    path('subscribe/<int:id>', views.article_detail, name="detailsub"),
 
 ]

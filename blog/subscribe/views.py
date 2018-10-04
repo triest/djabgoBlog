@@ -22,3 +22,16 @@ def main(request):
 
     return render(request,'test.html',{'users':users,'articles':list})
 
+
+def article_detail(request,id):
+    article=Article.objects.get(pk=id)
+    # тут будет проверка на то, подписан ли, по
+
+    answer = "sub"
+    try:
+        sunscribe = Subscribe.objects.get(owner=request.user, sunscribe=article.author);
+    except:
+        answer = "not_sub"
+
+
+    return render(request,'detail.html',{'article':article,'answer':answer})
