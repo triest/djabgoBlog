@@ -9,13 +9,23 @@ from . import forms
 
 #app_name='articles'
 
-def article_list(requwest):
+def article_list(request):
     articles=Article.objects.all().order_by('-date')
-    return render(requwest,"articles/article_list.html",{'articles':articles})
+    return render(request,"articles/article_list.html",{'articles':articles})
 
-def article_detail(requwest,id):
+def article_detail(request,id):
     article=Article.objects.get(pk=id)
-    return render(requwest,'articles/detail.html',{'article':article})
+    # тут будет проверка на то, подписан ли, по
+
+    answer = "sub"
+    try:
+        sunscribe = Subscribe.objects.get(owner=request.user, sunscribe=article.author);
+    except:
+        answer = "not_sub"
+
+
+
+    return render(request,'articles/detail.html',{'article':article,'answer':answer})
     #return HttpResponse(pk)
 
 @login_required(login_url="/account/login")
@@ -46,6 +56,9 @@ def article_create2(request):
         form = forms.CreateArticle()
 
     return render(request, 'articles/article_create2.html', {'form': form})
+
+
+
 
 
 @login_required(login_url="/account/login")

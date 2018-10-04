@@ -9,6 +9,11 @@
 loggin
  <p><a href="{% url 'subscribe' id=article.author.id %}">Подписаться на пользователя {{article.author}}</a> </p>
 {% endif %}
+
+{% if answer=='sub' %}
+  <p>одписан</p>
+{% else %}
+  <p>не подписн</p>
     <div class="article-detail">
         <div class="article">
             <h3>{{article.title}}</h3>
