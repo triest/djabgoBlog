@@ -18,9 +18,10 @@ from django.urls import path
 from django.conf.urls import url,include
 from . import views;
 
-#app_name='subscribe'
+
+app_name='subscribe'
 
 urlpatterns = [
-    path('', views.main),
+    path('', views.main, name='main'),
 
 ]
