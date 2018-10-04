@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Лента новостей</title>
 </head>
 <body>
 
@@ -20,5 +20,9 @@ Blogs:
   <p>You are not logged in</p>
 
 {% endif %}
+
+ {% for user in users %}
+  {{user.username}}
+{% endfor %}
 </body>
 </html>
