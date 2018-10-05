@@ -29,5 +29,6 @@ urlpatterns = [
     path('<int:id>',views.article_detail,name="detail"),
     path('create',views.article_create,name="create"),
     path('create2', views.article_create2, name="create2"),
-    path('subscribe/<int:id>',views.sunscribe, name="subscribe")
+    path('subscribe/<int:id>',views.sunscribe, name="subscribe"),
+    path('testmail',views.testmail)
 ]

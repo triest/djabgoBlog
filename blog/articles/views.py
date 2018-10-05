@@ -5,7 +5,9 @@ from .models import Article
 from django.contrib.auth.decorators import login_required
 from subscribe.models import Subscribe;
 from . import forms
-# Create your views here.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
 
 #app_name='articles'
 
@@ -76,3 +78,39 @@ def sunscribe(request,id):
    # print("ok");
    # return articl
 # e_list(request)
+
+
+#сигнал для отправки сообщений при добавлении поста пользоватеем (или через админку)
+
+@receiver(post_save, sender=Article) #при добавлении статьи
+def handle_new_job(sender, **kwargs):
+    post = kwargs.get('instance') ; #пост, который добавили
+    avtor=post.author # автор поста
+    #теперь надо получить подписки, где в подписанных знач
+    subscribe=Subscribe.objects.get( avtor in 'subscription') # список подписок, где есть этот автор
+
+    # теперь в цикле обходим выбранные подписки, и направляем их владельцам mail
+    for item in sunscribe:
+        user=sunscribe.owner;
+        send_mail(
+            'New article',
+            'Message.',
+            'from@example.com',
+            ['john@example.com', 'jane@example.com'],
+        )
+
+def testmail(requwest):
+  #  post = kwargs.get('instance');  # пост, который добавили
+  #  avtor = post.author  # автор поста
+    # теперь надо получить подписки, где в подписанных знач
+   # subscribe = Subscribe.objects.get(avtor in 'subscription')  # список подписок, где есть этот автор
+
+    # теперь в цикле обходим выбранные подписки, и направляем их владельцам mail
+
+    send_mail(
+            'New article',
+            'Message.',
+            'sakura-testmail@sakura-city.info',
+           ['triest21@gmail.com'],
+            fail_silently=False,
+        )
