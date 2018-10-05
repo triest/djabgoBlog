@@ -8,6 +8,13 @@ from . import forms
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
+# get_template is what we need for loading up the template for parsing.
+from django.template.loader import get_template
+from django.template import loader
+# Templates in Django need a "Context" to parse with, so we'll borrow this.
+# "Context"'s are really nothing more than a generic dict wrapped up in a
+# neat little function call.
+from django.template import Context
 
 #app_name='articles'
 
@@ -106,11 +113,39 @@ def testmail(requwest):
    # subscribe = Subscribe.objects.get(avtor in 'subscription')  # список подписок, где есть этот автор
 
     # теперь в цикле обходим выбранные подписки, и направляем их владельцам mail
+    #use template
+#  send_mail(
+ #     'Thanks for signing up!',
+  #    get_template('mail/email.html').render(
+   #       Context({
+    #          'username': 'test_username',
+   #       })
+   #   ),
+   #   'sakura-testmail@sakura-city.info',
+  #    ['triest21@gmail.com'],
+ #     fail_silently=False
+ # )
+  subject = 'Thank you from ******'
+  message = 'text version of HTML message'
+  from_email =  'sakura-testmail@sakura-city.info'
+  to_list =  ['triest21@gmail.com']
+  html_message =  loader.render_to_string(
+            'mail/email.html',
+            {
+                'user_name': 'test',
+                'subject':  'Thank you from' + 'dynymic_data',
 
-    send_mail(
-            'New article',
-            'Message.',
-            'sakura-testmail@sakura-city.info',
-           ['triest21@gmail.com'],
-            fail_silently=False,
+            }
         )
+
+
+  send_mail(subject, message, from_email, to_list, fail_silently=True, html_message=html_message)
+
+  #old
+  # send_mail(
+   #         'New article',
+   #         'Message.',
+   #         'sakura-testmail@sakura-city.info',
+   #        ['triest21@gmail.com'],
+  #          fail_silently=False,
+  #      )
