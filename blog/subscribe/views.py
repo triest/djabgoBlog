@@ -20,7 +20,7 @@ def main(request):
     except:
         return render(request,'error.html')
     users = subscribe.subscription.all()
-    articles=Article.objects.all()
+    articles=Article.objects.all().order_by('-date')
     #теперь фильтруем
     list=[x for x in articles if x.author  in users]
 
