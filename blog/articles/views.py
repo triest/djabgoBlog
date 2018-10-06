@@ -93,20 +93,25 @@ def sunscribe(request,id):
 def handle_new_job(sender, **kwargs):
     post = kwargs.get('instance') ; #пост, который добавили
     avtor=post.author # автор поста
-    #теперь надо получить подписки, где в подписанных знач
-    subscribe=Subscribe.objects.get( avtor in 'subscription') # список подписок, где есть этот автор
+    #теперь надо получить подписки, где в подписанных значиться автор
+   # subscribe=Subscribe.objects.get(avtor in Subscribe.subscription ) # список подписок, где есть этот автор  КОСЯК ТУТ
+    subscribe=avtor.subscription.all(); # список подписок, где есть этот автор  КОСЯК ТУТ
+    # фильтруем маийлы владельцев подписок
+   # email_list=subscribe.owner.mail in subscribe
+ #   email_list=[o.owner.email for o in subscribe]  #список mail владельцев
+    email_list=['triest21@gmail.com']
+    testmail(email_list)
+    #for item in sunscribe:
+     #   user=sunscribe.owner;
+      #  send_mail(
+       #     'New article',
+        #    'Message.',
+        #    'from@example.com',
+        #    ['john@example.com', 'jane@example.com'],
+       # )
 
-    # теперь в цикле обходим выбранные подписки, и направляем их владельцам mail
-    for item in sunscribe:
-        user=sunscribe.owner;
-        send_mail(
-            'New article',
-            'Message.',
-            'from@example.com',
-            ['john@example.com', 'jane@example.com'],
-        )
 
-def testmail(requwest):
+def testmail(recipient_list):
   #  post = kwargs.get('instance');  # пост, который добавили
   #  avtor = post.author  # автор поста
     # теперь надо получить подписки, где в подписанных знач
@@ -128,13 +133,12 @@ def testmail(requwest):
   subject = 'Thank you from ******'
   message = 'text version of HTML message'
   from_email =  'sakura-testmail@sakura-city.info'
-  to_list =  ['triest21@gmail.com']
+  to_list =  recipient_list
   html_message =  loader.render_to_string(
             'mail/email.html',
             {
                 'user_name': 'test',
                 'subject':  'Thank you from' + 'dynymic_data',
-
             }
         )
 
