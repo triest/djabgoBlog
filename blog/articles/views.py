@@ -98,8 +98,8 @@ def handle_new_job(sender, **kwargs):
     subscribe=avtor.subscription.all(); # список подписок, где есть этот автор  КОСЯК ТУТ
     # фильтруем маийлы владельцев подписок
    # email_list=subscribe.owner.mail in subscribe
- #   email_list=[o.owner.email for o in subscribe]  #список mail владельцев
-    email_list=['triest21@gmail.com']
+    email_list=[o.owner.email for o in subscribe]  #список mail владельцев
+ #   email_list=['triest21@gmail.com']
     testmail(email_list)
     #for item in sunscribe:
      #   user=sunscribe.owner;
@@ -153,3 +153,10 @@ def testmail(recipient_list):
    #        ['triest21@gmail.com'],
   #          fail_silently=False,
   #      )
+
+def write_list_to_file(list):
+    # Open the file for writing
+    F = open('list.txt', 'w')
+
+    for i in list:
+        F.write(str(i) + "\n")
