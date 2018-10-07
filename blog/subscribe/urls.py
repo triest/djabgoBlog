@@ -18,11 +18,13 @@ from django.urls import path
 from django.conf.urls import url,include
 from . import views;
 from django.views.generic import (CreateView,DetailView,ListView)
+from .views import SubscribeAllViews
 
 app_name='subscribe'
 
 urlpatterns = [
-    path('', views.main, name='main'),
+   # path('', views.main, name='main'),
+    path('',SubscribeAllViews.as_view(),name='main'),
     path('<int:id>', views.article_detail, name="detailsub"),
     path('readed/<int:id>', views.mark_readed, name="readed"),
     path('readed2', views.readed, name="readed2"),

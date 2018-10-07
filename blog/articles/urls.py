@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import url
 from . import views;
 from django.views.generic import (CreateView,DetailView,ListView)
-from .views import ArticleListView
+from .views import ArticleListView,ArticleCreateView
 
 app_name='articles'
 
@@ -30,7 +30,8 @@ urlpatterns = [
    # path('<int:slug>',views.article_detail,name="detail"),
   #  path('<int:id>',views.article_detail,name="detail"),
     path('<pk>',views.DetailView.as_view(),name="detail"),
-    path('create',views.article_create,name="create"),
+    #path('create',views.article_create,name="create"),
+    path('create',ArticleCreateView.as_view(),name="create"),
     path('create2', views.article_create2, name="create2"),
     path('subscribe/<int:id>',views.sunscribe, name="subscribe"),
     path('testmail',views.testmail)

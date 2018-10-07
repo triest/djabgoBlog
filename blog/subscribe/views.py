@@ -9,7 +9,7 @@ from .models import Read
 from . import forms
 from django.contrib.auth.models import User;
 from articles.models import Article
-
+from django.views.generic import (CreateView,DetailView,ListView)
 # Create your views here.
 @login_required(login_url="/account/login")
 def main(request):
@@ -18,6 +18,12 @@ def main(request):
     list=get_articles_by_subscribe(request,current_user)
     type = 'Полная лента'
     return render(request,'test.html',{'articles':list,'type':type})
+
+class SubscribeAllViews(ListView):
+   template_name = 'test.html'
+   def get_queryset(self):
+        return get_articles_by_subscribe(self.request,self.request.user)
+
 
 
 

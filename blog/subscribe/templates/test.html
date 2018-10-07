@@ -4,9 +4,7 @@
 
    <p><a href="{% url 'articles:list'%}">К общей ленте</a></p>
 Пользователи, на которых вы подписаны:
- {% for user in users %}
-  {{user.username}}
-{% endfor %}
+
 <br>
 Лента новостей:
  <a href="{% url 'subscribe:main'%}">Полная лента</a>
@@ -15,7 +13,7 @@
 <br>
 <b>{{type}}</b>
 
-        {% for article in articles %}
+        {% for article in object_list %}
             <div class="article">
                 <H2>{{article.title}}</H2>
                 <p><a href="{% url 'subscribe:detailsub' id=article.id %}">{{article.title}}</a> </p>

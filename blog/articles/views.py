@@ -20,13 +20,27 @@ from django.template import Context
 from django.views.generic import (CreateView,DetailView,ListView)
 #app_name='articles'
 from django.views.generic import (CreateView,DetailView,ListView)
-
+from  .forms import CreateArticle
 
 
 
 def article_list(request):
     articles=Article.objects.all().order_by('-date')
     return render(request,"articles/article_list.html",{'articles':articles})
+
+class ArticleCreateView(CreateView):
+    template_name = 'articles/article_create.html';
+    form_class = CreateArticle;
+    queryset = Article.objects.all()
+
+    def form_valid(self, form):
+        article=Article.object.create_article(
+            title=form.cleaned_data['title'],
+            description=form.cleaned_data['description'],
+            author=self.request.user
+        )
+        return super().form_valid(form)
+        #instance.save()
 
 class ArticleListView(ListView):
     template_name='articles/article_list.html'
