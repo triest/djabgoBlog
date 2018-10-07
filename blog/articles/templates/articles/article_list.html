@@ -1,19 +1,7 @@
 {% extends 'base_layout.html' %}
 
 {% block content%}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-      <form class="logout-link" action="{% url 'accounts:logout'%}" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="logout">
-                </form>
-      <p><a href="{% url 'articles:create' %}">Создать статью</a> </p>
-    <p><a href="{% url 'subscribe:main'%}">Моя лента подписок</a></p>
 
-{% else %}
-  <p>You are not logged in</p>
-
-{% endif %}
 
     <div class="articles">
         {% for article in articles %}

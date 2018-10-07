@@ -2,18 +2,6 @@
 
 {% block content%}
 
-
-Blogs:
-
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-
-    <p><a>Моя лента подписок</a></p>
-{% else %}
-  <p>You are not logged in</p>
-
-
-{% endif %}
    <p><a href="{% url 'articles:list'%}">К общеё ленте</a></p>
 Пользователи, на которых вы подписаны:
  {% for user in users %}
