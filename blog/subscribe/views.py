@@ -16,8 +16,8 @@ def main(request):
     current_user = request.user
     #получаем инстанс subscribe авторизованного пользователя
     list=get_articles_by_subscribe(request,current_user)
-
-    return render(request,'test.html',{'articles':list})
+    type = 'Полная лента'
+    return render(request,'test.html',{'articles':list,'type':type})
 
 
 
@@ -80,8 +80,8 @@ def unreaded(request):
          return render(request, 'test.html', {'articles': list_unreadeds})
      list_subscribe = get_articles_by_subscribe(readed,user) #по подписк
      list_unreadeds=[x for x in list_subscribe if x not in list_readed]
-
-     return render(request,'test.html',{'articles':list_unreadeds})
+     type='Не прочитанные посты'
+     return render(request,'test.html',{'articles':list_unreadeds,'type':type})
 
 #список прочитанных
 @login_required(login_url="/account/login")
@@ -95,6 +95,6 @@ def readed(request):
         return render(request, 'test.html', {'articles': list_readed})
 
     list_readed=readed.articles_readed.all();
+    type='Прочитанные посты'
 
-
-    return render(request, 'test.html', { 'articles': list_readed})
+    return render(request, 'test.html', { 'articles': list_readed,'type':type})
