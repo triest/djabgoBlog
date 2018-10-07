@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+
 from .models import Article
 from django.contrib.auth.decorators import login_required
 from subscribe.models import Subscribe;
@@ -17,6 +19,10 @@ from django.template import loader
 from django.template import Context
 
 #app_name='articles'
+
+
+
+
 
 def article_list(request):
     articles=Article.objects.all().order_by('-date')
@@ -100,7 +106,7 @@ def handle_new_job(sender, **kwargs):
    # email_list=subscribe.owner.mail in subscribe
     email_list=[o.owner.email for o in subscribe]  #список mail владельцев
  #   email_list=['triest21@gmail.com']
-    testmail(email_list)
+    testmail(email_list,avtor,post)
     #for item in sunscribe:
      #   user=sunscribe.owner;
       #  send_mail(
@@ -111,7 +117,7 @@ def handle_new_job(sender, **kwargs):
        # )
 
 
-def testmail(recipient_list):
+def testmail(recipient_list,author,Article):
   #  post = kwargs.get('instance');  # пост, который добавили
   #  avtor = post.author  # автор поста
     # теперь надо получить подписки, где в подписанных знач
@@ -130,15 +136,17 @@ def testmail(recipient_list):
   #    ['triest21@gmail.com'],
  #     fail_silently=False
  # )
-  subject = 'Thank you from ******'
+  subject = 'Новая статья по Вашей подписке.'
   message = 'text version of HTML message'
   from_email =  'sakura-testmail@sakura-city.info'
   to_list =  recipient_list
+  id= Article.id;
+
   html_message =  loader.render_to_string(
             'mail/email.html',
             {
-                'user_name': 'test',
-                'subject':  'Thank you from' + 'dynymic_data',
+                'article': Article,
+                'author_name':author
             }
         )
 
@@ -160,3 +168,16 @@ def write_list_to_file(list):
 
     for i in list:
         F.write(str(i) + "\n")
+
+from django.conf import settings
+base_url = settings.BASE_URL
+
+from django import template
+from django.conf import settings
+
+base_url = settings.BASE_URL
+register = template.Library()
+
+@register.simple_tag
+def add_domain(partial_url):
+      return base_url + partial_url

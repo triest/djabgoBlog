@@ -25,6 +25,7 @@ SECRET_KEY = '-!b49vr=p9m&c9drl85wc@cv=hbiwpcr7%q$to&ilh&o5aa)8z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+BASE_URL='127.0.0.1:8000'
 ALLOWED_HOSTS = []
 
 
