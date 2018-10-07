@@ -67,53 +67,20 @@ def mark_readed(request,id):
 #список нерочитанных
 @login_required(login_url="/account/login")
 def unreaded(request):
-    current_user = request.user
-    # получаем инстанс subscribe авторизованного пользователя
-    try:
-        subscribe = Subscribe.objects.get(owner=current_user)
-    except:
-        return render(request, 'error.html')
-    users = subscribe.subscription.all()
-    articles = Article.objects.all().order_by('-date')
-    # теперь фильтруем
-   # list = [x for x in articles if x.author in users]
+     user=request.user # подписант
+     readed = Read.objects.get(owner_reader=user) #все прочитанные
+     list_readed = readed.articles_readed.all();
+     list_subscribe = get_articles_by_subscribe(readed,user) #по подписк
+     list_unreadeds=[x for x in list_subscribe if x not in list_readed]
 
-    # еперь получаем лист прочитанных
-    try:
-        reader1 = Read.objects.get(name='test', owner_reader=request.user)  # проверяем, есть ли обьект
-    except Read.DoesNotExist:
-        reader1 = Read.objects.create(name='test', owner_reader=request.user)
-
-    articles = Article.objects.all().order_by('-date')
-    # теперь фильтруем
-    list = [x for x in articles if x.author in users]  #писок по подписке
-
-
-    list_readed=[x for x in list if x in reader1.articles_readed]
-
-
-
-   # readed_list = list.articles_readed.all()  #список прочитанных
-    return render(request,'test.html',{'articles':list_readed})
+     return render(request,'test.html',{'articles':list_unreadeds})
 
 #список прочитанных
 @login_required(login_url="/account/login")
 def readed(request):
-    current_user = request.user
-    # получаем инстанс subscribe авторизованного пользователя
-    try:
-        subscribe = Subscribe.objects.get(owner=current_user)
-    except:
-        return render(request, 'error.html')
-    users = subscribe.subscription.all()
-    articles = Article.objects.all().order_by('-date')
-    # теперь фильтруем
-    list = [x for x in articles if x.author in users]
+    user = request.user  # подписант
+   # list_readed = get_articles_by_subscribe(request, user)
+    readed=Read.objects.get(owner_reader=user)
+    list_readed=readed.articles_readed.all();
 
-    #еперь получаем лист прочитанных
-    list=Read.objects.get(owner_reader=current_user)
-    readed_list=list.articles_readed.all()
-
-
-
-    return render(request, 'test.html', {'users': users, 'articles': readed_list})
+    return render(request, 'test.html', { 'articles': list_readed})
