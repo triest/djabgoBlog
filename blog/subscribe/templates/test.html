@@ -15,13 +15,18 @@ Blogs:
 {% else %}
   <p>You are not logged in</p>
 
+
 {% endif %}
+   <p><a href="{% url 'articles:list'%}">К общеё ленте</a></p>
 Пользователи, на которых вы подписаны:
  {% for user in users %}
   {{user.username}}
 {% endfor %}
 <br>
 Лента новостей:
+  <a href="{% url 'subscribe:readed2'%}">Прочитанные</a>
+ <a href="{% url 'subscribe:main'%}">Полная лента</a>
+ <a href="{% url 'subscribe:unreaded'%}">Не прочитанные</a>
 
         {% for article in articles %}
             <div class="article">

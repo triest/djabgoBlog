@@ -26,7 +26,7 @@ def main(request):
 
     return render(request,'test.html',{'users':users,'articles':list})
 
-
+@login_required(login_url="/account/login")
 def article_detail(request,id):
     article=Article.objects.get(pk=id)
     # тут будет проверка на то, подписан ли, по
@@ -52,3 +52,23 @@ def mark_readed(request,id):
     reader1.articles_readed.add(article);
     reader1.save();
     return main(request)
+
+
+#список прочитанных
+@login_required(login_url="/account/login")
+def readed_list(request):
+
+    return render(request,'test.html',{'articles':list})
+
+
+#список прочитанных
+@login_required(login_url="/account/login")
+def unreaded(request):
+
+    return render(request,'test.html',{'articles':list})
+
+#список прочитанных
+@login_required(login_url="/account/login")
+def readed(request):
+
+    return render(request,'test.html',{'articles':list})

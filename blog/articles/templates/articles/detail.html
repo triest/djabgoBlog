@@ -7,7 +7,7 @@
 <body>
 {% if user.is_authenticated %}
 loggin
- <p><a href="{% url 'subscribe' id=article.author.id %}">Подписаться на пользователя {{article.author}}</a> </p>
+ <p><a href="{% url 'articles:subscribe' id=article.author.id %}">Подписаться на пользователя {{article.author}}</a> </p>
 {% endif %}
 
 
@@ -19,7 +19,7 @@ loggin
             <h1>{{article.author}}</h1>
             <p>{{article.description}}</p>
 
-               <p><a href="{% url 'list' %}">Back</a> </p>
+               <p><a href="{% url 'articles:list' %}">Back</a> </p>
         </div>
     </div>
 </body>
