@@ -68,8 +68,16 @@ def mark_readed(request,id):
 @login_required(login_url="/account/login")
 def unreaded(request):
      user=request.user # подписант
-     readed = Read.objects.get(owner_reader=user) #все прочитанные
-     list_readed = readed.articles_readed.all();
+     try:
+         readed = Read.objects.get(owner_reader=user) #все прочитанные
+     except:
+         list_unreadeds = []
+         return render(request, 'test.html', {'articles': list_unreadeds})
+     list_unreadeds = []
+     try:
+        list_readed = readed.articles_readed.all();
+     except:
+         return render(request, 'test.html', {'articles': list_unreadeds})
      list_subscribe = get_articles_by_subscribe(readed,user) #по подписк
      list_unreadeds=[x for x in list_subscribe if x not in list_readed]
 
@@ -80,7 +88,13 @@ def unreaded(request):
 def readed(request):
     user = request.user  # подписант
    # list_readed = get_articles_by_subscribe(request, user)
-    readed=Read.objects.get(owner_reader=user)
+    try:
+        readed=Read.objects.get(owner_reader=user)
+    except:
+        list_readed=[]
+        return render(request, 'test.html', {'articles': list_readed})
+
     list_readed=readed.articles_readed.all();
+
 
     return render(request, 'test.html', { 'articles': list_readed})
