@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Лента новостей</title>
-</head>
-<body>
+{% extends 'base_layout.html' %}
+
+{% block content%}
+
 
 Blogs:
 
@@ -37,6 +34,4 @@ Blogs:
               <p><a href="{% url 'subscribe:readed' id=article.id %}">Прочитан</a> </p>
             </div>
         {% endfor %}
-
-</body>
-</html>
+{% endblock%}
