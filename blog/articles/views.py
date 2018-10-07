@@ -17,9 +17,9 @@ from django.template import loader
 # "Context"'s are really nothing more than a generic dict wrapped up in a
 # neat little function call.
 from django.template import Context
-
+from django.views.generic import (CreateView,DetailView,ListView)
 #app_name='articles'
-
+from django.views.generic import (CreateView,DetailView,ListView)
 
 
 
@@ -27,6 +27,14 @@ from django.template import Context
 def article_list(request):
     articles=Article.objects.all().order_by('-date')
     return render(request,"articles/article_list.html",{'articles':articles})
+
+class ArticleListView(ListView):
+    template_name='articles/article_list.html'
+    #queryset = Article.objects.all().order_by('-date')
+    def get_queryset(self):
+        return Article.objects.all().order_by('-date')
+
+
 
 def article_detail(request,id):
     article=Article.objects.get(pk=id)

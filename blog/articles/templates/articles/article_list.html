@@ -4,12 +4,13 @@
 <a href="{% url 'subscribe:main'%}">Моя лента подписок</a>
 
     <div class="articles">
-        {% for article in articles %}
+        {% for article in object_list %}
             <div class="article">
 
                 <H2><a href="{% url 'articles:detail' id=article.id %}">{{article.title}}</a></H2>
-                <p>{{article.author}}</p>
-                <p>{{article.date}} </p>
+                <small>{{article.author}}</small>,
+                <small>{{article.date}} </small>
+                <small><a href="{% url 'articles:detail' id=article.id %}">читать</a></small>
             </div>
         {% endfor %}
     </div>

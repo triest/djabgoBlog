@@ -5,13 +5,14 @@
 
 
   <p>не подписн</p>
-    <div class="article-detail">
+   <div class="article-detail">
         <div class="article">
             <h3>{{article.title}}</h3>
-            <h2>{{article.date}}</h2>
-            <h1>{{article.author}}</h1>
+            <small>{{article.date}}</small>
+            <small>{{article.author}}</small>
             <p>{{article.description}}</p>
-               <p><a href="{% url 'subscribe:main' %}">Back</a> </p>
+
+               <p><a href="{% url 'articles:list' %}">Назад</a> </p>
         </div>
     </div>
 {% endblock%}

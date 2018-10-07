@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
 from . import views;
-
+from django.views.generic import (CreateView,DetailView,ListView)
 
 app_name='subscribe'
 
