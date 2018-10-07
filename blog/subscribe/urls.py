@@ -25,6 +25,6 @@ urlpatterns = [
     path('', views.main, name='main'),
     path('<int:id>', views.article_detail, name="detailsub"),
     path('readed/<int:id>', views.mark_readed, name="readed"),
-    path('readed', views.readed, name="readed2"),
+    path('readed2', views.readed, name="readed2"),
     path('unreaded', views.unreaded, name="unreaded"),
 ]
