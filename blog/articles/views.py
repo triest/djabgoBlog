@@ -31,10 +31,13 @@ def article_list(request):
 class ArticleListView(ListView):
     template_name='articles/article_list.html'
     #queryset = Article.objects.all().order_by('-date')
+
     def get_queryset(self):
         return Article.objects.all().order_by('-date')
 
-
+class DetailView(DetailView):
+    model=Article;
+    template_name = 'articles/detail.html'
 
 def article_detail(request,id):
     article=Article.objects.get(pk=id)
